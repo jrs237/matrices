@@ -46,7 +46,7 @@ class Matrix {
     for (int row = 0; row < height; row++)
       for (int col = 0; col < other.width; col++)
         for (int elem = 0; elem < width; elem++)
-          r.elements[row][col] = elements[row][elem] * other.elements[elem][col];
+          r.elements[row][col] += elements[row][elem] * other.elements[elem][col];
 
     return r;
   }
@@ -68,7 +68,7 @@ class Matrix {
   /** Transpose this matrix and return the result. */
   Matrix transpose() {
     Matrix r = new Matrix(width, height);
-    
+
     for (int row = 0; row < height; row++)
       for (int col = 0; col < width; col++)
         r.elements[col][row] = elements[row][col];

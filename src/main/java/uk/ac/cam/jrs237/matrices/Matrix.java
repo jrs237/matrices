@@ -31,7 +31,10 @@ class Matrix {
 
   /** Create a new matrix based on the elements provided. */
   Matrix(double[][] elements) {
-    this.elements = elements;
+    // stack overflow go brr
+    // (in rust I would do `.iter().map(|e| e.clone()).collect()` or something,
+    // but I'm not used to java :c)
+    this.elements = Arrays.stream(elements).map(double[]::clone).toArray(double[][]::new);;
     this.width = elements[0].length;
     this.height = elements.length;
   }
